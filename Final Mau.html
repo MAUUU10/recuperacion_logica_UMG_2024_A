@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Operaciones con Inputs</title>
+</head>
+<body>
+    <h2>Operaciones con Inputs</h2>
+    <form id="operationForm">
+        <label for="input1">Input 1:</label>
+        <input type="number" id="input1" name="input1" required><br><br>
+        <label for="input2">Input 2:</label>
+        <input type="number" id="input2" name="input2" required><br><br>
+        <label for="input3">Input 3:</label>
+        <input type="number" id="input3" name="input3" required><br><br>
+        <button type="button" onclick="performOperation()">Operación 1</button>
+        <button type="button" onclick="repeatOperation()">Operación 2</button><br><br>
+        <p id="result"></p>
+    </form>
+    <script>
+        function performOperation() {
+            let val1 = parseFloat(document.getElementById('input1').value);
+            let val2 = parseFloat(document.getElementById('input2').value);
+            let val3 = parseFloat(document.getElementById('input3').value);
+            let resultMessage = "";
+            if (val1 > val2) {
+                let resultado = val1 * val2 * val3;
+                resultMessage = `Multiplicando ${val1} * ${val2} * ${val3} = ${resultado}`;
+            } else if (val2 === 0) {
+                let min = Math.min(val1, val3);
+                let max = Math.max(val1, val3);
+                let resultado = max - min;
+                resultMessage = `Restando ${max} - ${min} = ${resultado}`;
+            } else if (val1 === val2) {
+                let resultado = val1 + val2 + val3;
+                resultMessage = `Sumando ${val1} + ${val2} + ${val3} = ${resultado}`;
+            } else {
+                resultMessage = "No se cumple ninguna condición especificada.";
+            }
+            document.getElementById('result').innerText = resultMessage;
+        }
+        function repeatOperation() {
+            let val1 = parseFloat(document.getElementById('input1').value);
+            let val2 = parseFloat(document.getElementById('input2').value);
+            let val3 = parseFloat(document.getElementById('input3').value);
+            let sum = val1 + val2 + val3;
+            let resultMessage = "";
+            if (sum > 10) {
+                let result = (val1 + val2) * val3;
+                resultMessage = `La suma es mayor a 10. Multiplicando ${val1} + ${val2} y luego sumando ${val3} = ${result}`;
+            } else {
+                let result = val1 * val2 * val3;
+                resultMessage = `La suma es menor o igual a 10. Multiplicando ${val1} * ${val2} * ${val3} = ${result}`;
+            }
+            document.getElementById('result').innerText = resultMessage;
+        }
+    </script>
+</body>
+</html>
